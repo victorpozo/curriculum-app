@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git(url: 'https://github.com/faraday-academy/curriculum-app', branch: 'dev')
+        git(url: 'https://github.com/victorpozo/curriculum-app', branch: 'dev')
       }
     }
 
@@ -15,13 +15,18 @@ pipeline {
           }
         }
 
-        stage('Front-End - Tests Unitario') {
+        stage('Instalación de dependencias') {
           steps {
             sh 'cd curriculum-front && npm i'
-            sh 'cd curriculum-front && npm i --save-dev vue-jest && npm run test:unit'
           }
         }
 
+      }
+    }
+    
+    stage('Front-End - Tests Unitarios') {
+      steps {
+        sh 'cd curriculum-front && npm i --save-dev vue-jest && npm run test:unit'
       }
     }
 
