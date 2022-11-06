@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('Log') {
+    stage('Inicio') {
       parallel {
         stage('Log') {
           steps {
@@ -15,7 +15,7 @@ pipeline {
           }
         }
 
-        stage('Instalación de dependencias') {
+        stage('Instalacion de dependencias') {
           steps {
             sh 'cd curriculum-front && npm i'
           }
@@ -23,8 +23,8 @@ pipeline {
 
       }
     }
-    
-    stage('Front-End - Tests Unitarios') {
+
+    stage('Back-End - Tests Unitarios') {
       steps {
         sh 'cd curriculum-front && npm i --save-dev vue-jest && npm run test:unit'
       }
